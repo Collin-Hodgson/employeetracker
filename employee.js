@@ -62,6 +62,13 @@ function runSearch() {
         case "Update employee manager status":
           updateManager();
           break;
+
+        case "Exit":
+          console.log("Connection Ended");
+          conn.end();
+          break;
       }
     });
 }
+
+function employeeSearch() {}
