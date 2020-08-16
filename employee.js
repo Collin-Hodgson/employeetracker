@@ -86,6 +86,25 @@ function employeeSearch() {
     console.log("/n");
     console.table(res);
 
-    startProgram();
+    runSearch();
+  });
+}
+
+function departmentSearch() {
+  let query =
+    "SELECT d.name AS department, r.title, e.id, e.first_name, e.last_name FROM employee e";
+  query += "LEFT JOIN role r ON (r.id = e.role_id)";
+  query += "LEFT JOIN department d ON (d.id = r.department_id)";
+  query += "ORDER BY d.name";
+
+  conn.query(query, function (err, res) {
+    if (err) throw err;
+    console.log("/n");
+    console.log("Employees by Department");
+    console.log("-------------");
+    console.log("/n");
+    console.table(res);
+
+    runSearch();
   });
 }
